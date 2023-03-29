@@ -13,14 +13,12 @@ const openaiApiKey = process.env.OPENAI_KEY;
 app.post("/generate-text", async (req, res) => {
   try {
     const prompt = req.body.prompt;
-    const engine = req.body.engine || "text-davinci-002";
-    const maxTokens = req.body.maxTokens || 50;
 
     const response = await axios.post(
-      "https://api.openai.com/v1/engines/" + engine + "/completions",
+      "https://api.openai.com/v1/engines/text-davinci-002/completions",
       {
         prompt: prompt,
-        max_tokens: maxTokens,
+        max_tokens: 100,
         n: 1,
         stop: null,
         temperature: 0.7,
